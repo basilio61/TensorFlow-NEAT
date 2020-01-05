@@ -28,7 +28,7 @@ def dense_from_coo(shape, conns, dtype=tf.float64):
     if len(idxs) == 0:
         return tf.zeros(shape, dtype=dtype)
     rows, cols = np.array(idxs).transpose()
-    return tf.scatter_nd(tf.stack([rows, cols], -1), tf.convert_to_tensor(weights, preferred_dtype=dtype), shape)
+    return tf.scatter_nd(tf.stack([rows, cols], -1), tf.convert_to_tensor(weights, dtype_hint=dtype), shape)
 
 
 # def dense_from_coo(shape, conns, dtype=tf.float64):
